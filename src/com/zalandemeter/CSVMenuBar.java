@@ -177,9 +177,9 @@ public class CSVMenuBar extends JMenuBar {
         add(editor);
     }
 
-    /**
+/**
      * A színválasztó menüponthoz tartozó getter.
-     * @return a színvűlasztó menüpont.
+     * @return a színválasztó menüpont.
      */
     public JSpinner getSpinnerColor() {
         return spinnerColor;
@@ -187,7 +187,7 @@ public class CSVMenuBar extends JMenuBar {
 
     /**
      * A színválasztó menüpont feévehető értékeihez tartozó getter.
-     * @return a színválasztó menüpont feévehető értékei.
+     * @return a színválasztó menüpont felvehető értékei.
      */
     public String[] getSpinnerTypes() {
         return spinnerTypes;
