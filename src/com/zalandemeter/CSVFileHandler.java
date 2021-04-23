@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -89,6 +90,49 @@ public class CSVFileHandler {
             fileWriter.close();
             edited = false;
             currentFile = filename;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Rendezett CSV file-ba mentést végző függvény. A kezelt vászon objects listájában található objektumokat menti el.
+     * Minden sorba egy objektum kerül [x,y,szín] formátumban
+     * @param filename a menteni kívánt fájl neve.
+     */
+    public void saveOrderedCSV(String filename){
+        try {
+            FileWriter fileWriter = new FileWriter(filename);
+            int[] idxBlue = canvas.getIdxBlue();
+            ArrayList<Item> blue = canvas.getBlue();
+            for (int i: idxBlue) {
+                Item item = blue.get(i);
+                BigDecimal bdX = new BigDecimal(String.valueOf(item.getX()));
+                BigDecimal bdY = new BigDecimal(String.valueOf(item.getY()));
+                bdX = bdX.setScale(8, RoundingMode.HALF_UP);
+                bdY = bdY.setScale(8, RoundingMode.HALF_UP);
+                fileWriter.write(bdX.doubleValue() + "," + bdY.doubleValue() + "," + item.getColor() + System.getProperty("line.separator"));
+            }
+            int[] idxYellow = canvas.getIdxYellow();
+            ArrayList<Item> yellow = canvas.getYellow();
+            for (int i: idxYellow) {
+                Item item = yellow.get(i);
+                BigDecimal bdX = new BigDecimal(String.valueOf(item.getX()));
+                BigDecimal bdY = new BigDecimal(String.valueOf(item.getY()));
+                bdX = bdX.setScale(8, RoundingMode.HALF_UP);
+                bdY = bdY.setScale(8, RoundingMode.HALF_UP);
+                fileWriter.write(bdX.doubleValue() + "," + bdY.doubleValue() + "," + item.getColor() + System.getProperty("line.separator"));
+            }
+            for (Item item: canvas.getObjects()) {
+                if (item.getColor() == 0 || item.getColor() == 3 || item.getColor() == 4) {
+                    BigDecimal bdX = new BigDecimal(String.valueOf(item.getX()));
+                    BigDecimal bdY = new BigDecimal(String.valueOf(item.getY()));
+                    bdX = bdX.setScale(8, RoundingMode.HALF_UP);
+                    bdY = bdY.setScale(8, RoundingMode.HALF_UP);
+                    fileWriter.write(bdX.doubleValue() + "," + bdY.doubleValue() + "," + item.getColor() + System.getProperty("line.separator"));
+                }
+            }
+            fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

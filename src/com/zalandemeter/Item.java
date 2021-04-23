@@ -22,7 +22,7 @@ public class Item {
 
     /**
      * Az objektum színét azonosító kódszám.<br>
-     * ( 0 - narancssárga; 1 - kék; 2 - sárga; 3 - piros; 4 - fehér )
+     * ( 0 - fehér; 1 - kék; 2 - sárga; 3 - piros; 4 - narancssárga )
      */
     private int color;
 
@@ -64,11 +64,11 @@ public class Item {
          * Itt történik a szín dekódolása.
          */
         switch (color){
-            case 0: ourGraphics.setColor(new Color(255,110,0)); break;
+            case 0: ourGraphics.setColor(Color.WHITE); break;
             case 1: ourGraphics.setColor(Color.BLUE); break;
             case 2: ourGraphics.setColor(Color.YELLOW); break;
             case 3: ourGraphics.setColor(Color.RED); break;
-            case 4: ourGraphics.setColor(Color.WHITE); break;
+            case 4: ourGraphics.setColor(new Color(255,110,0)); break;
             default: break;
         }
         ourGraphics.fill(new Ellipse2D.Double((x*objectDistance)-(objectSize/2.0),(y*objectDistance)-(objectSize/2.0),objectSize,objectSize));

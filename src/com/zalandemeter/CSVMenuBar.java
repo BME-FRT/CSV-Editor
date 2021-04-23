@@ -30,7 +30,7 @@ public class CSVMenuBar extends JMenuBar {
      * @param guiHandlers A GUI interakcióit tartalmazó példány.
      */
     public CSVMenuBar(GUIHandlers guiHandlers) {
-        spinnerTypes = new String[]{"orange", "blue", "yellow", "red", "white", "null"};
+        spinnerTypes = new String[]{"white", "blue", "yellow", "red", "orange", "null"};
         SpinnerListModel listModel = new SpinnerListModel(spinnerTypes);
         spinnerColor = new JSpinner(listModel);
         this.guiHandlers = guiHandlers;

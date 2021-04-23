@@ -135,7 +135,7 @@ public class GUIHandlers {
      */
     public void addItem(){
         csvFileHandler.setEdited(true);
-        canvas.getObjects().add(new Item(0,0,4));
+        canvas.getObjects().add(new Item(0,0,0));
         canvas.repaint();
     }
 
@@ -167,11 +167,11 @@ public class GUIHandlers {
     public void changeColor(){
         if (csvMouseListener.getSelected() != null){
             switch((String)gui.getMenuBar().getSpinnerColor().getValue()){
-                case "orange": csvMouseListener.getSelected().setColor(0); break;
+                case "white": csvMouseListener.getSelected().setColor(0); break;
                 case "blue": csvMouseListener.getSelected().setColor(1); break;
                 case "yellow": csvMouseListener.getSelected().setColor(2); break;
                 case "red": csvMouseListener.getSelected().setColor(3); break;
-                case "white": csvMouseListener.getSelected().setColor(4); break;
+                case "orange": csvMouseListener.getSelected().setColor(4); break;
                 case "null": gui.getMenuBar().getSpinnerColor().setValue(gui.getMenuBar().getSpinnerTypes()[4]);
                 default: break;
             }
@@ -195,6 +195,7 @@ public class GUIHandlers {
     public void showCurve(){
         canvas.initCurve();
         canvas.repaint();
+        csvFileHandler.saveOrderedCSV(csvFileHandler.getCurrentFile()+".ordered.csv");
     }
 
     /**
